@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +13,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        Category::truncate();
+        Tag::truncate();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $quantityOfCategories = 10;
+        $quantityOfTags = 10;
+
+        for ($i = 0; $i < $quantityOfCategories; $i++) {
+            Category::factory()->create();
+        }
+
+        for ($i = 0; $i < $quantityOfTags; $i++) {
+            Tag::factory()->create();
+        }
     }
 }

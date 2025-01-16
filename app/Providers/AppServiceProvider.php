@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Facades\Implementation\ArrayPagination;
+use App\Facades\Implementation\PetAPIClient;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->app->bind('petAPIClient', function () {
+            return new PetAPIClient();
+        });
     }
 }
